@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Classements</title>
+  <link rel="stylesheet" href="../styles/style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: white;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
+
+    .controls select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    table thead {
+      background-color: #007bff;
+      color: white;
+    }
+
+    table th, table td {
+      text-align: center;
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    table tr:hover {
+      background-color: #007bff;
+    }
+
+    #graph-container {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    canvas {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="../images/logo.png" alt="Mon Logo" class="logo">
+  <h1>Classement de N1</h1>
+  <p class="presentation">Retrouvez ici le classement en fonction de la journée du championnat</p>
+  <nav>
+    <ul class="menu">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="../pages/statistiques.html">Statistiques</a></li>
+      <li><a href="../pages/actualite.html">Actualités</a></li>
+      <li><a href="../pages/clubs.html">Clubs</a></li>
+      <li class="active"><a href="classements.html">Classements</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>Classement du Championnat</h1>
+
+  <div class="controls">
+    <select id="select-saison">
+      <option value="saison_2024_2025">2024-2025</option>
+      <!-- Ajoute d'autres saisons ici -->
+    </select>
+
+    <select id="select-journee">
+      <option value="1">Journée 1</option>
+      <option value="2">Journée 2</option>
+      <option value="3">Journée 3</option>
+      <option value="4">Journée 4</option>
+      <option value="5">Journée 5</option>
+      <option value="6">Journée 6</option>
+      <option value="7">Journée 7</option>
+      <option value="8">Journée 8</option>
+      <option value="9">Journée 9</option>
+      <option value="10">Journée 10</option>
+      <option value="11">Journée 11</option>
+      <option value="12">Journée 12</option>
+      <option value="13">Journée 13</option>
+      <option value="14">Journée 14</option>
+      <option value="15">Journée 15</option>
+      <option value="16">Journée 16</option>
+      <option value="17">Journée 17</option>
+      <option value="18">Journée 18</option>
+      <option value="19">Journée 19</option>
+      <option value="20">Journée 20</option>
+      <option value="21">Journée 21</option>
+      <option value="22">Journée 22</option>
+      <option value="23">Journée 23</option>
+      <option value="24">Journée 24</option>
+      <option value="25">Journée 25</option>
+      <option value="26">Journée 26</option>
+      <option value="27">Journée 27</option>
+      <option value="28">Journée 28</option>
+      <option value="29">Journée 29</option>
+      <option value="30">Journée 30</option>
+      <option value="31">Journée 31</option>
+      <option value="32">Journée 32</option>
+      <option value="33">Journée 33</option>
+      <option value="34">Journée 34</option>
+      <!-- Dynamique via JS -->
+    </select>
+  </div>
+
+  <table id="tableau-classement">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Club</th>
+        <th>Pts</th>
+        <th>J</th>
+        <th>V</th>
+        <th>N</th>
+        <th>D</th>
+        <th>BP</th>
+        <th>BC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Rempli via JS -->
+    </tbody>
+  </table>
+
+  <div id="graph-container">
+    <h2>Évolution du Classement</h2>
+    <p>(À venir ici)</p>
+    <canvas id="graphique-evolution" width="600" height="300"></canvas>
+  </div>
+</div>
+
+<!-- Fichier data.js doit exposer window.saison_2024_2025 -->
+<script src="../data/saison_2024_2025.js"></script>
+
+<!-- Script principal -->
+<script src="../scripts/classements.js" defer></script>
+
+</body>
+</html>

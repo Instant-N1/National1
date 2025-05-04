@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Instant N1</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+    <header>
+        <img src="../images/logo.png" alt="Mon Logo" class="logo">
+        <h1>Clubs et joueurs de N1</h1>
+        <p class="presentation">Retrouvez ici les 18 clubs évoluant dans le championnat de National 1 et leurs joueurs</p>
+        <nav>
+            <ul class="menu">
+		<li><a href="../index.html">Accueil</a></li>
+		<li><a href="../pages/statistiques.html">Statistiques</a></li>
+                <li><a href="../pages/actualite.html">Actualités</a></li>
+                <li class="active"><a href="clubs.html">Clubs</a></li>
+                <li><a href="../pages/classements.html">Classements</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<script src="../scripts/data.js"></script>
+<script src="../scripts/clubs.js"></script>
+
+<main>
+
+	<h1>Clubs et Joueurs</h1>
+
+	<label for="seasonSelect">Choisir une saison :</label>
+	<select id="seasonSelect">
+  		<option value="2024-2025">2024-2025</option>
+		<option value="2025-2026">2025-2026</option>
+	</select>
+
+<div id="clubsContainer"></div>
+
+</main>
+
+<footer>
+    <p>&copy; 2025 Instant N1</p>
+</footer>
+
+</body>
+</html>

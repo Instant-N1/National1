@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Instant N1</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+    <header>
+        <img src="../images/logo.png" alt="Mon Logo" class="logo">
+        <h1>Actualités</h1>
+        <p class="presentation">Retrouvez ici l'actualité du National 1</p>
+        <nav>
+            <ul class="menu">
+		<li><a href="../index.html">Accueil</a></li>
+		<li><a href="../pages/statistiques.html">Statistiques</a></li>
+                <li class="active"><a href="actualite.html">Actualités</a></li>
+                <li><a href="../pages/clubs.html">Clubs</a></li>
+                <li><a href="../pages/classements.html">Classements</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<main>
+
+	<div class="filtrage-container">
+  		<input type="text" id="tag-search" placeholder="Rechercher par tag...">
+  		<div id="selected-tags"></div>
+		<div id="suggestions"></div>
+  		<button id="clear-filters">Réinitialiser</button>
+	</div>
+
+
+        <section class="articles">
+
+            <article class="article-card">
+		<a href="../pages/articles/interview_dadoune.html">
+			<div class="article-content" data-tags="interview, bourg-en-bresse">
+				<img src="../images/articles/interview_dadoune.png" alt="Ottman Dadoune">
+                		<h2>Entretien avec... Ottman Dadoune</h2>
+                		<p>L'attaquant emblématique de la N1 nous parle de son parcours et de la vie de footballeur professionnel...</p>
+			</div>
+		</a>
+            </article>
+
+            <article class="article-card">
+		<a href="../pages/articles/interview_hbouch.html">
+			<div class="article-content" data-tags="interview, boulogne">
+				<img src="../images/articles/interview_hbouch.png" alt="Abdel Hbouch">
+                		<h2>Abdel Hbouch, la révélation de Boulogne</h2>
+                		<p>Véritable révélation du côté de l'US Boulogne, l'offensif de 26 ans à répondu à nos questions...</p>
+			</div>
+		</a>
+            </article>
+
+            <article class="article-card">
+		<a href="../pages/articles/budgets_clubs_2024_2025.html">
+			<div class="article-content" data-tags="transfert, stat, budget">
+				<img src="../images/articles/budgets_2024_2025.png" alt="Image d'illustration">
+                		<h2>De combien dispose un club en National ? On vous réponds</h2>
+                		<p>Découvrez les budgets alloués aux 17 clubs qui ont composé la saison 2024-2025</p>
+			</div>
+		</a>
+            </article>
+
+
+
+
+        </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Instant N1</p>
+</footer>
+
+  <script src="../scripts/filtrage_actu.js"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Détails du joueur</title>
+  <link rel="stylesheet" href="../styles/style.css" />
+  <style>
+    .joueur-container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+      font-family: sans-serif;
+    }
+
+    .header-joueur {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .header-joueur img {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .infos-joueur ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .section-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .section-flex > div {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    #galerie-joueur img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    #tableau-stats {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #tableau-stats th, #tableau-stats td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    #tableau-stats th {
+      background-color: #f4f4f4;
+    }
+
+    iframe {
+      width: 100%;
+      height: 250px;
+      border: none;
+    }
+
+    /* 📌 Zoom effet pour les images */
+    .hover-zoom {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+    }
+
+    .hover-zoom:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    /* 📌 Galerie image encadrée */
+    .card-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-right: 10px;
+    }
+
+    /* 📌 Encadré + scroll transferts */
+    .transferts-scroll {
+      max-height: 160px;
+      overflow-y: auto;
+      list-style: none;
+      padding: 10px;
+      margin: 0;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+
+    .transferts-scroll li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.95em;
+    }
+
+    .transferts-scroll img.logo-transfert {
+      width: 35px;
+      height: 35px;
+      object-fit: contain;
+      margin-right: 10px;
+      border-radius: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .transferts-scroll img.logo-transfert:hover {
+      transform: scale(1.1);
+    }
+
+    /* 📌 Encadré photo joueur */
+    .card-joueur {
+      width: 140px;
+      height: 140px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="../images/logo.png" alt="Mon Logo" class="logo">
+    <h1>Clubs et joueurs de N1</h1>
+    <p class="presentation">Retrouvez ici les joueurs du National</p>
+    <nav>
+      <ul class="menu">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../pages/statistiques.html">Statistiques</a></li>
+        <li><a href="../pages/actualite.html">Actualités</a></li>
+        <li class="active"><a href="clubs.html">Clubs</a></li>
+        <li><a href="../pages/classements.html">Classements</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="joueur-container">
+    <div class="joueur-infos-wrapper" style="display: flex; justify-content: space-between; gap: 30px;">
+      <!-- Bloc photo et infos joueur -->
+      <div>
+        <div class="card-joueur hover-zoom">
+          <img id="photo-joueur" src="" alt="Photo du joueur" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <h2 id="nom-joueur"></h2>
+        <ul id="liste-infos" style="text-align: left;"></ul>
+      </div>
+
+      <!-- Bloc transferts -->
+      <div>
+        <h3>Transferts</h3>
+        <ul id="liste-transferts" class="transferts-scroll"></ul>
+      </div>
+    </div>
+
+    <div class="section-flex">
+      <div>
+        <h3>Postes du joueur</h3>
+	<div id="postes-actifs"></div>
+      </div>
+
+      <div>
+        <h2>Vidéo</h2>
+        <iframe id="video-joueur" src=""></iframe>
+      </div>
+
+<!-- GALERIE PHOTO
+      <div>
+        <h2>Galerie photo</h2>
+        <div id="galerie-joueur" style="display: flex;"></div>
+      </div>
+    </div>
+-->
+
+<div class="card-temps-jeu">
+  <h2>Temps de jeu par compétition</h2>
+<div id="temps-jeu-container">
+  <label for="select-saison">Saison :</label>
+  <select id="select-saison"></select>
+  <table id="tableau-temps-jeu">
+    <thead>
+      <tr>
+        <th>Compétition</th>
+        <th>Matchs</th>
+        <th>Titulaires</th>
+        <th>Minutes</th>
+        <th>Moyenne</th>
+	<th>Buts</th>
+	<th>Passes décisives</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+  <table id="tableau-temps-jeu">
+    <tbody></tbody>
+  </table>
+</div>
+
+<!-- GRAPHIQUE DE NOTE ET TABLEAU DE STAT
+    <div class="section-flex">
+      <div style="flex: 1 1 100%">
+        <h2>Statistiques détaillées</h2>
+<div style="margin-top: 60px;">
+  <h2>Évolution des notes Sofascore</h2>
+	<div class="graphique-wrapper">
+  	  <canvas id="graphique-notes"></canvas>
+	</div>
+  <canvas id="graphique-notes" width="600" height="50"></canvas>
+</div>
+        <table id="tableau-stats">
+          <thead>
+            <tr>
+              <th>Statistique</th>
+              <th>Valeur</th>
+              <th>Classement</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+-->
+
+  <script src="../scripts/data_joueurs.js"></script>
+  <!-- Chart.js v4 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <!-- Plugin Zoom compatible v4 -->
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.umd.min.js"></script>
+  <script src="../scripts/joueur.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
