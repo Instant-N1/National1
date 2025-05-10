@@ -1,6 +1,7 @@
 // scripts/auth.js
 import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
+import { auth } from "./firebase-config.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDUYXwvQGNvG7FF1hmEY8T-nvtpnXCaWkI",
@@ -16,24 +17,43 @@ const firebaseConfig = {
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// ✅ Code pour changer le bouton "Connexion" en "Mon profil"
+
+// Détecte l'état de connexion
 onAuthStateChanged(auth, (user) => {
-  const menu = document.querySelector(".user-menu");
-  const connectBtn = document.getElementById("btn-connexion");
+  const loginBtn = document.getElementById("login-btn");
+  const profileMenu = document.getElementById("profile-menu");
 
   if (user) {
-    connectBtn.style.display = "none";
-    menu.style.display = "block";
-    // Tu peux afficher le pseudo ou l'e-mail ici si tu veux
+    // Si connecté : cacher "Connexion", afficher "Mon profil"
+    if (loginBtn) loginBtn.style.display = "none";
+    if (profileMenu) profileMenu.style.display = "inline-block";
   } else {
-    connectBtn.style.display = "block";
-    menu.style.display = "none";
+    // Sinon : afficher "Connexion", cacher "Mon profil"
+    if (loginBtn) loginBtn.style.display = "inline-block";
+    if (profileMenu) profileMenu.style.display = "none";
   }
 });
 
-// ✅ Déconnexion
-document.getElementById("logout-btn")?.addEventListener("click", () => {
-  signOut(auth).then(() => {
-    window.location.href = "index.html";
+// Gérer le menu déroulant
+const profileBtn = document.getElementById("profile-btn");
+const dropdown = document.getElementById("profile-dropdown");
+
+if (profileBtn) {
+  profileBtn.addEventListener("click", () => {
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
   });
-});
+}
+
+// Déconnexion
+const logoutBtn = document.getElementById("logout-btn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    signOut(auth)
+      .then(() => {
+        window.location.href = "index.html";
+      })
+      .catch((error) => {
+        console.error("Erreur de déconnexion :", error);
+      });
+  });
+}
