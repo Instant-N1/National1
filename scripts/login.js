@@ -17,7 +17,14 @@ const firebaseConfig = {
 };
 
 // Initialisation Firebase
-const app = initializeApp(firebaseConfig);
+import { getApps, initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+
+let app;
+if (!getApps().length) {
+  app = initializeApp(firebaseConfig);
+} else {
+  app = getApps()[0];
+} ;
 const auth = getAuth(app);
 
 // Connexion
@@ -31,7 +38,7 @@ loginForm.addEventListener("submit", (e) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       console.log("Connecté :", userCredential.user);
-      window.location.href = "../../National1/index.html";
+      window.location.href = "/National1/index.html";
     })
     .catch((error) => {
       console.error("Erreur de connexion :", error.message);
