@@ -1,69 +1,72 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant N1</title>
-    <link rel="stylesheet" href="styles/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instant N1</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <header>
-        <img src="images/logo.png" alt="Mon Logo" class="logo">
-        <h1>Bienvenue sur le site officiel de Instant N1</h1>
-        <p class="presentation">Instant N1 est un relais d'information sur le championnat de National 1 (future Ligue 3), 3ème division de football française. Retrouvez nous également sur Twitter (X) et Instagram !</p>
-<nav>
-  <ul class="menu">
-    <li><a href="pages/statistiques.html">Statistiques</a></li>
-    <li><a href="pages/actualite.html">Actualités</a></li>
-    <li><a href="pages/clubs.html">Clubs</a></li>
-    <li><a href="pages/classements.html">Classements</a></li>
-    <li id="menu-mon-espace" style="display: none;">
-      <a href="#">Mon espace ▼</a>
-      <ul class="dropdown">
-        <li><a href="pages/mon_espace/instant-stade.html">Instant Stade</a></li>
-        <li><a href="pages/mon_espace/mes-pronos.html">Mes pronos</a></li>
-        <li><a href="pages/mon_espace/votes.html">Votes</a></li>
-        <li><a href="pages/mon_espace/certification.html">Certification</a></li>
+  <header>
+    <img src="images/logo.png" alt="Mon Logo" class="logo">
+    <h1>Bienvenue sur le site officiel de Instant N1</h1>
+    <p class="presentation">
+      Instant N1 est un relais d'information sur le championnat de National 1 (future Ligue 3), 3ème division de football française. Retrouvez nous également sur Twitter (X) et Instagram !
+    </p>
+
+    <nav>
+      <ul class="menu">
+        <li><a href="pages/statistiques.html">Statistiques</a></li>
+        <li><a href="pages/actualite.html">Actualités</a></li>
+        <li><a href="pages/clubs.html">Clubs</a></li>
+        <li><a href="pages/classements.html">Classements</a></li>
+        <li id="menu-mon-espace" style="display: none;">
+          <a href="#">Mon espace ▼</a>
+          <ul class="dropdown">
+            <li><a href="pages/mon_espace/instant-stade.html">Instant Stade</a></li>
+            <li><a href="pages/mon_espace/mes-pronos.html">Mes pronos</a></li>
+            <li><a href="pages/mon_espace/votes.html">Votes</a></li>
+            <li><a href="pages/mon_espace/certification.html">Certification</a></li>
+          </ul>
+        </li>
       </ul>
-    </li>
-  </ul>
-</nav>
+    </nav>
 
-<div id="auth-container">
-  <a href="pages/login.html" id="login-btn" class="auth-btn">Connexion</a>
+    <!-- Auth Buttons -->
+    <div id="auth-buttons" style="position: absolute; top: 20px; right: 20px;">
+      <a href="pages/login.html" id="login-btn" class="auth-btn">Connexion</a>
 
-<div id="auth-buttons">
-  <a href="connexion.html" id="login-btn">Connexion</a>
-  <div id="profile-menu" style="display: none; position: relative;">
-    <button id="profile-btn">Mon profil ⬇️</button>
-    <div id="profile-dropdown" style="display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #ccc; z-index: 100;">
-      <a href="mon-espace.html">Mon espace</a><br>
-      <a href="#" id="logout-btn">Déconnexion</a>
+      <div id="profile-menu" style="display: none; position: relative;">
+        <button id="profile-btn">Mon profil ⬇️</button>
+        <div id="profile-dropdown" style="display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #ccc; z-index: 100;">
+          <a href="pages/mon_espace/mon-espace.html">Mon espace</a><br>
+          <a href="#" id="logout-btn">Déconnexion</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-  </div>
-</div>
-    </header>
+  </header>
 
-    <script src="scripts/script.js"></script>
-<main>
-	<section class="articles">
-            <article class="article-card">
-		<a href="pages/articles/budgets_clubs_2024_2025.html">
-			<div class="article-content" data-tags="transfert, stat, budget">
-				<img src="images/articles/budgets_2024_2025.png" alt="Image d'illustration">
-                		<h2>De combien dispose un club en National ? On vous réponds</h2>
-                		<p>Découvrez les budgets alloués aux 17 clubs qui ont composé la saison 2024-2025</p>
-			</div>
-	</section>
-</main>
+  <script src="scripts/script.js"></script>
 
-<footer>
-        <p>&copy; 2025 Instant N1</p>
-    </footer>
+  <main>
+    <section class="articles">
+      <article class="article-card">
+        <a href="pages/articles/budgets_clubs_2024_2025.html">
+          <div class="article-content" data-tags="transfert, stat, budget">
+            <img src="images/articles/budgets_2024_2025.png" alt="Image d'illustration">
+            <h2>De combien dispose un club en National ? On vous réponds</h2>
+            <p>Découvrez les budgets alloués aux 17 clubs qui ont composé la saison 2024-2025</p>
+          </div>
+        </a>
+      </article>
+    </section>
+  </main>
 
-<script type="module" src="scripts/firebase-config.js"></script>
-<script type="module" src="scripts/auth.js"></script>
+  <footer>
+    <p>&copy; 2025 Instant N1</p>
+  </footer>
+
+  <script type="module" src="scripts/firebase-config.js"></script>
+  <script type="module" src="scripts/auth.js"></script>
 </body>
 </html>
