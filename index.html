@@ -11,14 +11,24 @@
         <img src="images/logo.png" alt="Mon Logo" class="logo">
         <h1>Bienvenue sur le site officiel de Instant N1</h1>
         <p class="presentation">Instant N1 est un relais d'information sur le championnat de National 1 (future Ligue 3), 3ème division de football française. Retrouvez nous également sur Twitter (X) et Instagram !</p>
-        <nav>
-            <ul class="menu">
-                <li><a href="pages/statistiques.html">Statistiques</a></li>
-                <li><a href="pages/actualite.html">Actualités</a></li>
-                <li><a href="pages/clubs.html">Clubs</a></li>
-                <li><a href="pages/classements.html">Classements</a></li>
-            </ul>
-        </nav>
+<nav>
+  <ul class="menu">
+    <li><a href="pages/statistiques.html">Statistiques</a></li>
+    <li><a href="pages/actualite.html">Actualités</a></li>
+    <li><a href="pages/clubs.html">Clubs</a></li>
+    <li><a href="pages/classements.html">Classements</a></li>
+    <li id="btn-connexion"><a href="pages/login.html">Connexion</a></li>
+    <li id="menu-mon-espace" style="display: none;">
+      <a href="#">Mon espace ▼</a>
+      <ul class="dropdown">
+        <li><a href="pages/mon_espace/instant-stade.html">Instant Stade</a></li>
+        <li><a href="pages/mon_espace/mes-pronos.html">Mes pronos</a></li>
+        <li><a href="pages/mon_espace/votes.html">Votes</a></li>
+        <li><a href="pages/mon_espace/certification.html">Certification</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </header>
 
     <script src="scripts/script.js"></script>
@@ -38,5 +48,7 @@
         <p>&copy; 2025 Instant N1</p>
     </footer>
 
+<script type="module" src="scripts/firebase-config.js"></script>
+<script type="module" src="scripts/auth.js"></script>
 </body>
 </html>

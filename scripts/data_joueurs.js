@@ -19,12 +19,12 @@ const joueursData = [
   {id: "PD16D",nom: "Delecroix", prenom: "Paul", age: 36, nationalite: "France", taille:"1.84 m", photo:"delecroix_dfco.png",
     pied: "Droit", poste_general: ["Gardien"], contrat: "2026", poste:["gk"],
     tempsJeu: {"2024-2025": [
-    	{ competition: "National", matchs: 25, titulaires: 25, minutes: 2250, buts:0, passes:0 },
+    	{ competition: "National", matchs: 26, titulaires: 26, minutes: 2340, buts:0, passes:0 },
     	{ competition: "Coupe de France", matchs: 0, titulaires: 0, minutes: 0, buts:0, passes:0 }],
                "2025-2026": [
 	{ competition: "National", matchs: 0, titulaires: 0, minutes: 0, buts:0, passes:0 },]},
     video: "",
-    transferts: [{ club: "Dijon FCO", matchs: 24, dates: "2024-actuel", logo:"logo_dfco.png", prix:"Libre", stat:"9 clean sheet" },
+    transferts: [{ club: "Dijon FCO", matchs: 26, dates: "2024-actuel", logo:"logo_dfco.png", prix:"Libre", stat:"9 clean sheet" },
 	{ club: "Chamois Niort", matchs: 34, dates: "2023-2024", logo:"logo_niort.png", prix:"Libre", stat:"10 clean sheet" },
 	{ club: "LB Châteauroux", matchs: 65, dates: "2021-2023", logo:"logo_lbc.png", prix:"Libre", stat:"20 clean sheet" },
 	{ club: "FC Annecy", matchs: 17, dates: "2021-2021", logo:"logo_fca.png", prix:"Libre", stat:"8 clean sheet" },
@@ -49,13 +49,13 @@ const joueursData = [
   {id: "ID2D",nom: "Diallo", prenom: "Ismail", age: 21, nationalite: "France", taille:"1.82 m", photo:"diallo_dfco.png",
     pied: "Droit", poste_general: ["Défenseur"], contrat: "2026", poste:["dg_dd"],
     tempsJeu: {"2024-2025": [
-    	{ competition: "National", matchs: 19, titulaires: 13, minutes: 1121, buts:0, passes:1 },
+    	{ competition: "National", matchs: 20, titulaires: 13, minutes: 1128, buts:0, passes:1 },
     	{ competition: "National 3", matchs: 4, titulaires: 4, minutes: 360, buts:0, passes:0 },
     	{ competition: "Coupe de France", matchs: 5, titulaires: 5, minutes: 429, buts:0, passes:1 }],
                "2025-2026": [
 	{ competition: "National", matchs: 0, titulaires: 0, minutes: 0, buts:0, passes:0 },]},
     video: "",
-    transferts: [{ club: "Dijon FCO", matchs: 27, stat:"0 buts", dates: "2024-actuel", logo:"logo_dfco.png", prix:"Libre" },
+    transferts: [{ club: "Dijon FCO", matchs: 29, stat:"0 buts", dates: "2024-actuel", logo:"logo_dfco.png", prix:"Libre" },
 	{ club: "Paris 13 Atletico", matchs: 25, stat:"1 but", dates: "2019-2024", logo:"logo_p13a.png", prix:"Formation" }],},
 
   {id: "NT3D",nom: "Titebah", prenom: "Nassim", age: 27, nationalite: "Maroc", taille:"1.76 m", photo:"titebah_dfco.png",
