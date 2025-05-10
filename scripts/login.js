@@ -1,5 +1,5 @@
 // login.js
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
 import {
   getAuth,
   signInWithEmailAndPassword
@@ -16,32 +16,30 @@ const firebaseConfig = {
   measurementId: "G-4YKGJN1W46"
 };
 
-// Initialisation Firebase
-import { getApps, initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
-
-let app;
-if (!getApps().length) {
-  app = initializeApp(firebaseConfig);
-} else {
-  app = getApps()[0];
-} ;
+// Initialisation Firebase (évite les erreurs de doublon)
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Connexion
 const loginForm = document.getElementById("login-form");
-loginForm.addEventListener("submit", (e) => {
-  e.preventDefault();
 
-  const email = loginForm["email"].value;
-  const password = loginForm["password"].value;
+if (loginForm) {
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      console.log("Connecté :", userCredential.user);
-      window.location.href = "/National1/index.html";
-    })
-    .catch((error) => {
-      console.error("Erreur de connexion :", error.message);
-      alert("Erreur : " + error.message);
-    });
-});
+    const email = loginForm["email"].value;
+    const password = loginForm["password"].value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log("Connecté :", userCredential.user);
+        window.location.href = "/National1/index.html"; // <-- adapte ce chemin selon ton projet
+      })
+      .catch((error) => {
+        console.error("Erreur de connexion :", error.message);
+        alert("Erreur : " + error.message);
+      });
+  });
+} else {
+  console.warn("Formulaire de connexion introuvable !");
+}
