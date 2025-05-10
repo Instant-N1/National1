@@ -1,10 +1,11 @@
+// login.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
 import {
   getAuth,
   signInWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
 
-// Configuration Firebase
+// Config Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyDUYXwvQGNvG7FF1hmEY8T-nvtpnXCaWkI",
   authDomain: "instant-n1.firebaseapp.com",
@@ -15,12 +16,12 @@ const firebaseConfig = {
   measurementId: "G-4YKGJN1W46"
 };
 
+// Initialisation Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Gestion du formulaire de connexion
+// Connexion
 const loginForm = document.getElementById("login-form");
-
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -28,13 +29,12 @@ loginForm.addEventListener("submit", (e) => {
   const password = loginForm["password"].value;
 
   signInWithEmailAndPassword(auth, email, password)
-    .then((cred) => {
-      console.log("Connecté :", cred.user);
-      // ✅ Rediriger vers la page d’accueil (ou autre)
-      window.location.href = "../index.html";
+    .then((userCredential) => {
+      console.log("Connecté :", userCredential.user);
+      window.location.href = "index.html";
     })
-    .catch((err) => {
-      console.error("Erreur de connexion :", err.message);
-      alert("Erreur : " + err.message); // facultatif
+    .catch((error) => {
+      console.error("Erreur de connexion :", error.message);
+      alert("Erreur : " + error.message);
     });
 });
