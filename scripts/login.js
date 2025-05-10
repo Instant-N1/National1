@@ -1,28 +1,18 @@
 import { auth } from "./firebase-config.js";
-import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { sendPasswordResetEmail } from "firebase/auth";
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
 
-const loginForm = document.getElementById("login-form");
-
-loginForm.addEventListener("submit", (e) => {
+document.getElementById("login-form").addEventListener("submit", (e) => {
   e.preventDefault();
+
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      alert("Connexion réussie !");
-      window.location.href = "../index.html"; // Redirection après connexion
+      console.log("Connexion réussie :", userCredential.user);
+      window.location.href = "mon-espace.html";
     })
     .catch((error) => {
-      alert("Erreur : " + error.message);
+      alert("Erreur de connexion : " + error.message);
     });
-
-sendPasswordResetEmail(auth, email)
-  .then(() => {
-    alert("Un email de réinitialisation a été envoyé !");
-  })
-  .catch((error) => {
-    alert("Erreur : " + error.message);
-  });
 });
