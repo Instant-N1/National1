@@ -17,7 +17,6 @@
     <li><a href="pages/actualite.html">Actualités</a></li>
     <li><a href="pages/clubs.html">Clubs</a></li>
     <li><a href="pages/classements.html">Classements</a></li>
-    <li id="btn-connexion"><a href="pages/login.html">Connexion</a></li>
     <li id="menu-mon-espace" style="display: none;">
       <a href="#">Mon espace ▼</a>
       <ul class="dropdown">
@@ -29,6 +28,23 @@
     </li>
   </ul>
 </nav>
+
+<div id="auth-container">
+  <a href="pages/login.html" id="login-btn" class="auth-btn">Connexion</a>
+
+  <div id="profile-menu" class="hidden">
+    <button class="profile-btn">Mon profil ▼</button>
+    <div class="dropdown-menu">
+      <a href="pages/mon-espace.html">Mon espace</a>
+      <a href="pages/profil.html">Mon profil</a>
+      <a href="pages/instant-stade.html">Instant Stade</a>
+      <a href="pages/pronos.html">Mes pronos</a>
+      <a href="pages/votes.html">Votes</a>
+      <a href="pages/certification.html">Certification</a>
+      <a href="#" id="logout">Déconnexion</a>
+    </div>
+  </div>
+</div>
     </header>
 
     <script src="scripts/script.js"></script>

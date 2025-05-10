@@ -4,19 +4,85 @@
   <meta charset="UTF-8">
   <title>Connexion</title>
   <link rel="stylesheet" href="../styles/style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
+      margin-bottom: 20px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .link a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .link a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Connexion à ton compte</h2>
+  <div class="login-container">
+    <h2>Connexion</h2>
     <form id="login-form">
       <input type="email" id="email" placeholder="Adresse email" required>
       <input type="password" id="password" placeholder="Mot de passe" required>
       <button type="submit">Se connecter</button>
     </form>
-    <p>Pas encore inscrit ? <a href="signup.html">Créer un compte</a></p>
+    <div class="link">
+      <p>Pas encore de compte ? <a href="signup.html">S'inscrire</a></p>
+    </div>
   </div>
 
-  <script type="module" src="../scripts/firebase-config.js"></script>
   <script type="module" src="../scripts/login.js"></script>
 </body>
 </html>

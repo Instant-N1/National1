@@ -640,6 +640,83 @@ nav ul li.active a {
   font-weight: bold;
 }
 
+.auth-button-container {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.auth-btn {
+  background-color: blue;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.auth-btn:hover {
+  background-color: gold;
+}
+
+/* Bouton connexion */
+.auth-btn, .profile-btn {
+  background-color: blue;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-btn:hover, .profile-btn:hover {
+  background-color: gold;
+}
+
+/* Profil */
+#auth-container {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 16px;
+  color: black;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+#profile-menu:hover .dropdown-menu {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
 footer {
     background-color: blue;
     color: white;
