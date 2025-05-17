@@ -5,13 +5,13 @@ const joueursData = [
   {id: "LM1D",nom: "Montfort", prenom: "Lenny", age: 23, nationalite: "France", taille:"1.89 m", photo:"montfort_dfco.png",
     pied: "Droit", poste_general: ["Gardien"], contrat: "2026", poste:["gk"],
     tempsJeu: {"2024-2025": [
-    	{ competition: "National", matchs: 5, titulaires: 5, minutes: 450, buts:0, passes:0 },
+    	{ competition: "National", matchs: 6, titulaires: 6, minutes: 540, buts:0, passes:0 },
     	{ competition: "National 3", matchs: 6, titulaires: 6, minutes: 540, buts:0, passes:0 },
     	{ competition: "Coupe de France", matchs: 5, titulaires: 5, minutes: 450, buts:0, passes:0 }],
                "2025-2026": [
 	{ competition: "National", matchs: 0, titulaires: 0, minutes: 0, buts:0, passes:0 },]},
     video: "",
-    transferts: [{ club: "Dijon FCO", matchs: 15, dates: "2023-actuel", logo:"logo_dfco.png", prix:"Libre", stat:"9 clean sheet" },
+    transferts: [{ club: "Dijon FCO", matchs: 16, dates: "2023-actuel", logo:"logo_dfco.png", prix:"Libre", stat:"9 clean sheet" },
 	{ club: "FC Nantes B", matchs: 9, dates: "2022-2023", logo:"logo_fcn.png", prix:"Libre", stat:"1 clean sheet" },
 	{ club: "AS Saint-Etienne B", matchs: 3, dates: "2019-2022", logo:"logo_asse.png", prix:"Non communiqué", stat:"1 clean sheet" },
 	{ club: "FC Lorient B", matchs: 1, dates: "2018-2019", logo:"logo_fcl.png", prix:"Formation", stat:"0 clean sheet" }],},
@@ -49,13 +49,13 @@ const joueursData = [
   {id: "ID2D",nom: "Diallo", prenom: "Ismail", age: 21, nationalite: "France", taille:"1.82 m", photo:"diallo_dfco.png",
     pied: "Droit", poste_general: ["Défenseur"], contrat: "2026", poste:["dg_dd"],
     tempsJeu: {"2024-2025": [
-    	{ competition: "National", matchs: 20, titulaires: 13, minutes: 1128, buts:0, passes:1 },
+    	{ competition: "National", matchs: 21, titulaires: 14, minutes: 1218, buts:0, passes:1 },
     	{ competition: "National 3", matchs: 4, titulaires: 4, minutes: 360, buts:0, passes:0 },
     	{ competition: "Coupe de France", matchs: 5, titulaires: 5, minutes: 429, buts:0, passes:1 }],
                "2025-2026": [
 	{ competition: "National", matchs: 0, titulaires: 0, minutes: 0, buts:0, passes:0 },]},
     video: "",
-    transferts: [{ club: "Dijon FCO", matchs: 29, stat:"0 buts", dates: "2024-actuel", logo:"logo_dfco.png", prix:"Libre" },
+    transferts: [{ club: "Dijon FCO", matchs: 30, stat:"0 buts", dates: "2024-actuel", logo:"logo_dfco.png", prix:"Libre" },
 	{ club: "Paris 13 Atletico", matchs: 25, stat:"1 but", dates: "2019-2024", logo:"logo_p13a.png", prix:"Formation" }],},
 
   {id: "NT3D",nom: "Titebah", prenom: "Nassim", age: 27, nationalite: "Maroc", taille:"1.76 m", photo:"titebah_dfco.png",
