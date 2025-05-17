@@ -713,6 +713,10 @@ nav ul li.active a {
   display: block;
 }
 
+#profile-btn:hover {
+  background-color: #0056b3;
+}
+
 .hidden {
   display: none;
 }

@@ -3,11 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <title>Mon Espace</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-  <h2>Bienvenue dans ton espace</h2>
+  <header>
+    <img src="images/logo.png" alt="Mon Logo" class="logo">
+    <h1>Bienvenue sur le site officiel de Instant N1</h1>
+    <p class="presentation">
+      Instant N1 est un relais d'information sur le championnat de National 1 (future Ligue 3), 3ème division de football française. Retrouvez nous également sur Twitter (X) et Instagram !
+    </p>
+
+    <nav>
+      <ul class="menu">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="statistiques.html">Statistiques</a></li>
+        <li><a href="actualite.html">Actualités</a></li>
+        <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="classements.html">Classements</a></li>
+      </ul>
+    </nav>
+
+    <!-- Auth Buttons -->
+    <div id="auth-buttons" style="position: absolute; top: 20px; right: 20px;">
+      <a href="pages/login.html" id="login-btn" class="auth-btn">Connexion</a>
+
+      <div id="profile-menu" style="display: none; position: relative;">
+        <button id="profile-btn">Mon espace</button>
+        <div id="profile-dropdown" style="display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #ccc; z-index: 100;">
+          <a href="#" id="logout-btn">Déconnexion</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <h2>Bienvenue dans ton espace !</h2>
   <p id="user-email"></p>
-  <button id="logout">Se déconnecter</button>
 
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
