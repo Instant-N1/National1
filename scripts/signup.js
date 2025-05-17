@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       createUserWithEmailAndPassword(auth, email, password)
         .then((cred) => {
           console.log("✅ Utilisateur créé :", cred.user);
-          window.location.href = "/National1/index.html"; // Redirection après inscription
+          window.location.href = "../index.html"; // Redirection après inscription
         })
         .catch((err) => {
           alert("❌ Erreur d'inscription : " + err.message);
