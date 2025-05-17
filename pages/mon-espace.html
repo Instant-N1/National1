@@ -51,6 +51,13 @@
   <div id="confirmation" class="confirmation-msg"></div>
 </div>
 
+<div class="carte-stats">
+  <h2>📊 Tes stats de jeu</h2>
+  <p><strong>Points :</strong> <span id="points">0</span></p>
+  <p><strong>Parties jouées :</strong> <span id="parties">0</span></p>
+  <p><strong>Meilleur score :</strong> <span id="meilleur-score">0</span></p>
+</div>
+
 <script>
   const pseudoInput = document.getElementById('pseudo');
   const equipeSelect = document.getElementById('equipe');
@@ -74,6 +81,34 @@
   equipeSelect.addEventListener('change', () => {
     localStorage.setItem('equipe', equipeSelect.value);
     confirmation.innerText = "✅ Équipe favorite enregistrée !";
+  });
+</script>
+
+<script type="module">
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+  import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+  const auth = getAuth();
+  const db = getFirestore();
+
+  const pointsEl = document.getElementById('points');
+  const partiesEl = document.getElementById('parties');
+  const meilleurScoreEl = document.getElementById('meilleur-score');
+
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        pointsEl.textContent = data.points || 0;
+        partiesEl.textContent = data.partiesJouées || 0;
+        meilleurScoreEl.textContent = data.meilleurScore || 0;
+      } else {
+        console.log("Pas encore de données de stats pour cet utilisateur.");
+      }
+    }
   });
 </script>
 
