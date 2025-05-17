@@ -33,8 +33,49 @@
     </div>
   </header>
 
-  <h2>Bienvenue dans ton espace !</h2>
-  <p id="user-email"></p>
+<div class="carte-preferences">
+  <h2>🎮 Ton profil</h2>
+  <label for="pseudo">Pseudo :</label>
+  <input type="text" id="pseudo" placeholder="Ton pseudo ici...">
+
+  <label for="equipe">Équipe favorite :</label>
+  <select id="equipe">
+    <option value="">-- Choisis ton équipe --</option>
+    <option value="Red Star">Red Star</option>
+    <option value="Martigues">Martigues</option>
+    <option value="Versailles">Versailles</option>
+    <option value="Nîmes">Nîmes</option>
+    <!-- Ajoute ici toutes les équipes de National 1 -->
+  </select>
+
+  <div id="confirmation" class="confirmation-msg"></div>
+</div>
+
+<script>
+  const pseudoInput = document.getElementById('pseudo');
+  const equipeSelect = document.getElementById('equipe');
+  const confirmation = document.getElementById('confirmation');
+
+  // Charger les valeurs au chargement
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedPseudo = localStorage.getItem('pseudo');
+    const savedEquipe = localStorage.getItem('equipe');
+
+    if (savedPseudo) pseudoInput.value = savedPseudo;
+    if (savedEquipe) equipeSelect.value = savedEquipe;
+  });
+
+  // Sauvegarder automatiquement
+  pseudoInput.addEventListener('input', () => {
+    localStorage.setItem('pseudo', pseudoInput.value);
+    confirmation.innerText = "✅ Pseudo enregistré !";
+  });
+
+  equipeSelect.addEventListener('change', () => {
+    localStorage.setItem('equipe', equipeSelect.value);
+    confirmation.innerText = "✅ Équipe favorite enregistrée !";
+  });
+</script>
 
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
