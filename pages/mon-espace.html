@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Mon Espace</title>
-  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="../styles/style.css" />
 </head>
 <body>
   <header>
-    <img src="../images/logo.png" alt="Mon Logo" class="logo">
+    <img src="../images/logo.png" alt="Mon Logo" class="logo" />
     <h1>Bienvenue sur le site officiel de Instant N1</h1>
     <p class="presentation">
       Instant N1 est un relais d'information sur le championnat de National 1 (future Ligue 3), 3ème division de football française. Retrouvez nous également sur Twitter (X) et Instagram !
@@ -24,146 +24,141 @@
     </nav>
 
     <!-- Auth Buttons -->
-      <div id="profile-menu" style="display: none; position: relative;">
-        <button id="profile-btn">Mon espace</button>
-        <div id="profile-dropdown" style="display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #ccc; z-index: 100;">
-          <a href="#" id="logout-btn">Déconnexion</a>
-        </div>
+    <div id="profile-menu" style="display: none; position: relative;">
+      <button id="profile-btn">Mon espace</button>
+      <div id="profile-dropdown" style="display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #ccc; z-index: 100;">
+        <a href="#" id="logout-btn">Déconnexion</a>
       </div>
     </div>
   </header>
 
-<div class="carte-preferences">
-  <h2>🎮 Ton profil</h2>
-  <label for="pseudo">Pseudo :</label>
-  <input type="text" id="pseudo" placeholder="Ton pseudo ici...">
+  <div class="carte-preferences">
+    <h2>🎮 Ton profil</h2>
+    <label for="pseudo">Pseudo :</label>
+    <input type="text" id="pseudo" placeholder="Ton pseudo ici..." />
 
-  <label for="equipe">Équipe favorite :</label>
-  <select id="equipe">
-    <option value="">-- Choisis ton équipe --</option>
-    <option value="Red Star">Red Star</option>
-    <option value="Martigues">Martigues</option>
-    <option value="Versailles">Versailles</option>
-    <option value="Nîmes">Nîmes</option>
-    <!-- Ajoute ici toutes les équipes de National 1 -->
-  </select>
+    <label for="equipe">Équipe favorite :</label>
+    <select id="equipe">
+      <option value="">-- Choisis ton équipe --</option>
+      <option value="Red Star">Red Star</option>
+      <option value="Martigues">Martigues</option>
+      <option value="Versailles">Versailles</option>
+      <option value="Nîmes">Nîmes</option>
+      <!-- Ajoute ici toutes les équipes de National 1 -->
+    </select>
 
-  <div id="confirmation" class="confirmation-msg"></div>
-</div>
+    <div id="confirmation" class="confirmation-msg"></div>
+  </div>
 
-<div class="carte-stats">
-  <h2>📊 Tes stats de jeu</h2>
-  <p><strong>Points :</strong> <span id="points">0</span></p>
-  <p><strong>Parties jouées :</strong> <span id="parties">0</span></p>
-  <p><strong>Meilleur score :</strong> <span id="meilleur-score">0</span></p>
-</div>
+  <div class="carte-stats">
+    <h2>📊 Tes stats de jeu</h2>
+    <p><strong>Points :</strong> <span id="points">0</span></p>
+    <p><strong>Parties jouées :</strong> <span id="parties">0</span></p>
+    <p><strong>Meilleur score :</strong> <span id="meilleur-score">0</span></p>
+  </div>
 
-<script>
-  // Garde ton script localStorage tel quel (tu peux le laisser en script classique)
-  const pseudoInput = document.getElementById('pseudo');
-  const equipeSelect = document.getElementById('equipe');
-  const confirmation = document.getElementById('confirmation');
+  <script>
+    // localStorage pour pseudo et équipe
+    const pseudoInput = document.getElementById('pseudo');
+    const equipeSelect = document.getElementById('equipe');
+    const confirmation = document.getElementById('confirmation');
 
-  window.addEventListener('DOMContentLoaded', () => {
-    const savedPseudo = localStorage.getItem('pseudo');
-    const savedEquipe = localStorage.getItem('equipe');
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedPseudo = localStorage.getItem('pseudo');
+      const savedEquipe = localStorage.getItem('equipe');
 
-    if (savedPseudo) pseudoInput.value = savedPseudo;
-    if (savedEquipe) equipeSelect.value = savedEquipe;
-  });
+      if (savedPseudo) pseudoInput.value = savedPseudo;
+      if (savedEquipe) equipeSelect.value = savedEquipe;
+    });
 
-  pseudoInput.addEventListener('input', () => {
-    localStorage.setItem('pseudo', pseudoInput.value);
-    confirmation.innerText = "✅ Pseudo enregistré !";
-  });
+    pseudoInput.addEventListener('input', () => {
+      localStorage.setItem('pseudo', pseudoInput.value);
+      confirmation.innerText = "✅ Pseudo enregistré !";
+    });
 
-  equipeSelect.addEventListener('change', () => {
-    localStorage.setItem('equipe', equipeSelect.value);
-    confirmation.innerText = "✅ Équipe favorite enregistrée !";
-  });
-</script>
+    equipeSelect.addEventListener('change', () => {
+      localStorage.setItem('equipe', equipeSelect.value);
+      confirmation.innerText = "✅ Équipe favorite enregistrée !";
+    });
+  </script>
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-  import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
 
-  // 1. Ta config Firebase ici (remplace par ta vraie config)
-  const firebaseConfig = {
-  apiKey: "AIzaSyDUYXwvQGNvG7FF1hmEY8T-nvtpnXCaWkI",
-  authDomain: "instant-n1.firebaseapp.com",
-  projectId: "instant-n1",
-  storageBucket: "instant-n1.appspot.com", // corrigé : `.app` → `.com`
-  messagingSenderId: "536848004939",
-  appId: "1:536848004939:web:313de5f5478ee1870bdace",
-  };
+  <script>
+    // Ta config Firebase (remplace par ta config réelle)
+    const firebaseConfig = {
+      apiKey: "AIzaSyDUYXwvQGNvG7FF1hmEY8T-nvtpnXCaWkI",
+      authDomain: "instant-n1.firebaseapp.com",
+      projectId: "instant-n1",
+      storageBucket: "instant-n1.appspot.com",
+      messagingSenderId: "536848004939",
+      appId: "1:536848004939:web:313de5f5478ee1870bdace"
+    };
 
-  // 2. Initialise Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
+    // Initialise Firebase
+    firebase.initializeApp(firebaseConfig);
 
-  // 3. Sélecteurs du DOM pour afficher les stats
-  const pointsEl = document.getElementById('points');
-  const partiesEl = document.getElementById('parties');
-  const meilleurScoreEl = document.getElementById('meilleur-score');
+    const auth = firebase.auth();
+    const db = firebase.firestore();
 
-  // 4. Fonction pour mettre à jour les stats dans Firestore
-  async function updateStats(nouveauxPoints, scoreDeLaPartie) {
-    const user = auth.currentUser;
-    if (!user) return;
+    const pointsEl = document.getElementById('points');
+    const partiesEl = document.getElementById('parties');
+    const meilleurScoreEl = document.getElementById('meilleur-score');
 
-    const userRef = doc(db, "users", user.uid);
-    const snap = await getDoc(userRef);
+    // Fonction pour mettre à jour les stats dans Firestore
+    async function updateStats(nouveauxPoints, scoreDeLaPartie) {
+      const user = auth.currentUser;
+      if (!user) return;
 
-    if (!snap.exists()) {
-      await setDoc(userRef, {
-        points: nouveauxPoints,
-        partiesJouées: 1,
-        meilleurScore: scoreDeLaPartie
-      });
-    } else {
-      const data = snap.data();
-      await updateDoc(userRef, {
-        points: (data.points || 0) + nouveauxPoints,
-        partiesJouées: (data.partiesJouées || 0) + 1,
-        meilleurScore: Math.max(data.meilleurScore || 0, scoreDeLaPartie)
-      });
+      const userRef = db.collection("users").doc(user.uid);
+      const doc = await userRef.get();
+
+      if (!doc.exists) {
+        await userRef.set({
+          points: nouveauxPoints,
+          partiesJouées: 1,
+          meilleurScore: scoreDeLaPartie
+        });
+      } else {
+        const data = doc.data();
+        await userRef.update({
+          points: (data.points || 0) + nouveauxPoints,
+          partiesJouées: (data.partiesJouées || 0) + 1,
+          meilleurScore: Math.max(data.meilleurScore || 0, scoreDeLaPartie)
+        });
+      }
     }
-  }
 
-  // 5. Surveille la connexion pour charger les stats de l'utilisateur
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      const docRef = doc(db, "users", user.uid);
-      const docSnap = await getDoc(docRef);
+    // Surveille la connexion utilisateur et affiche les stats
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const docRef = db.collection("users").doc(user.uid);
+        const docSnap = await docRef.get();
 
-      if (docSnap.exists()) {
-        const data = docSnap.data();
-        pointsEl.textContent = data.points || 0;
-        partiesEl.textContent = data.partiesJouées || 0;
-        meilleurScoreEl.textContent = data.meilleurScore || 0;
+        if (docSnap.exists) {
+          const data = docSnap.data();
+          pointsEl.textContent = data.points || 0;
+          partiesEl.textContent = data.partiesJouées || 0;
+          meilleurScoreEl.textContent = data.meilleurScore || 0;
+        } else {
+          pointsEl.textContent = 0;
+          partiesEl.textContent = 0;
+          meilleurScoreEl.textContent = 0;
+          console.log("Pas encore de données de stats pour cet utilisateur.");
+        }
       } else {
         pointsEl.textContent = 0;
         partiesEl.textContent = 0;
         meilleurScoreEl.textContent = 0;
-        console.log("Pas encore de données de stats pour cet utilisateur.");
+        console.log("Utilisateur non connecté");
       }
-    } else {
-      pointsEl.textContent = 0;
-      partiesEl.textContent = 0;
-      meilleurScoreEl.textContent = 0;
-      console.log("Utilisateur non connecté");
-    }
-  });
+    });
 
-  // Pour pouvoir tester la fonction dans la console (optionnel)
-  window.updateStats = updateStats;
-</script>
-
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
-  <script src="../scripts/firebase-config.js"></script>
-  <script src="../scripts/mon-espace.js"></script>
+    // Rendre updateStats accessible depuis console pour tests
+    window.updateStats = updateStats;
+  </script>
 </body>
 </html>
