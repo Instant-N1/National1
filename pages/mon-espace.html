@@ -112,6 +112,44 @@
   });
 </script>
 
+<script type="module">
+  import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
+  const db = getFirestore();
+  const auth = getAuth();
+
+  async function updateStats(nouveauxPoints, scoreDeLaPartie) {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const userRef = doc(db, "users", user.uid);
+    const snap = await getDoc(userRef);
+
+    if (!snap.exists()) {
+      await setDoc(userRef, {
+        points: nouveauxPoints,
+        partiesJouées: 1,
+        meilleurScore: scoreDeLaPartie
+      });
+    } else {
+      const data = snap.data();
+      const pointsActuels = data.points || 0;
+      const partiesActuelles = data.partiesJouées || 0;
+      const meilleurScore = data.meilleurScore || 0;
+
+      await updateDoc(userRef, {
+        points: pointsActuels + nouveauxPoints,
+        partiesJouées: partiesActuelles + 1,
+        meilleurScore: Math.max(meilleurScore, scoreDeLaPartie)
+      });
+    }
+  }
+
+  // EXEMPLE : simuler une partie
+  updateStats(250, 12); // → tu l’appelleras depuis ton mini-jeu plus tard
+</script>
+
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
   <script src="../scripts/firebase-config.js"></script>
