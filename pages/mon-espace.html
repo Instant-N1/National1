@@ -59,11 +59,11 @@
 </div>
 
 <script>
+  // Garde ton script localStorage tel quel (tu peux le laisser en script classique)
   const pseudoInput = document.getElementById('pseudo');
   const equipeSelect = document.getElementById('equipe');
   const confirmation = document.getElementById('confirmation');
 
-  // Charger les valeurs au chargement
   window.addEventListener('DOMContentLoaded', () => {
     const savedPseudo = localStorage.getItem('pseudo');
     const savedEquipe = localStorage.getItem('equipe');
@@ -72,7 +72,6 @@
     if (savedEquipe) equipeSelect.value = savedEquipe;
   });
 
-  // Sauvegarder automatiquement
   pseudoInput.addEventListener('input', () => {
     localStorage.setItem('pseudo', pseudoInput.value);
     confirmation.innerText = "✅ Pseudo enregistré !";
@@ -85,40 +84,31 @@
 </script>
 
 <script type="module">
-  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-  import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-  const auth = getAuth();
-  const db = getFirestore();
+  // 1. Ta config Firebase ici (remplace par ta vraie config)
+  const firebaseConfig = {
+  apiKey: "AIzaSyDUYXwvQGNvG7FF1hmEY8T-nvtpnXCaWkI",
+  authDomain: "instant-n1.firebaseapp.com",
+  projectId: "instant-n1",
+  storageBucket: "instant-n1.appspot.com", // corrigé : `.app` → `.com`
+  messagingSenderId: "536848004939",
+  appId: "1:536848004939:web:313de5f5478ee1870bdace",
+  };
 
+  // 2. Initialise Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // 3. Sélecteurs du DOM pour afficher les stats
   const pointsEl = document.getElementById('points');
   const partiesEl = document.getElementById('parties');
   const meilleurScoreEl = document.getElementById('meilleur-score');
 
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      const docRef = doc(db, "users", user.uid);
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        const data = docSnap.data();
-        pointsEl.textContent = data.points || 0;
-        partiesEl.textContent = data.partiesJouées || 0;
-        meilleurScoreEl.textContent = data.meilleurScore || 0;
-      } else {
-        console.log("Pas encore de données de stats pour cet utilisateur.");
-      }
-    }
-  });
-</script>
-
-<script type="module">
-  import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
-  import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-
-  const db = getFirestore();
-  const auth = getAuth();
-
+  // 4. Fonction pour mettre à jour les stats dans Firestore
   async function updateStats(nouveauxPoints, scoreDeLaPartie) {
     const user = auth.currentUser;
     if (!user) return;
@@ -134,20 +124,41 @@
       });
     } else {
       const data = snap.data();
-      const pointsActuels = data.points || 0;
-      const partiesActuelles = data.partiesJouées || 0;
-      const meilleurScore = data.meilleurScore || 0;
-
       await updateDoc(userRef, {
-        points: pointsActuels + nouveauxPoints,
-        partiesJouées: partiesActuelles + 1,
-        meilleurScore: Math.max(meilleurScore, scoreDeLaPartie)
+        points: (data.points || 0) + nouveauxPoints,
+        partiesJouées: (data.partiesJouées || 0) + 1,
+        meilleurScore: Math.max(data.meilleurScore || 0, scoreDeLaPartie)
       });
     }
   }
 
-  // EXEMPLE : simuler une partie
-  updateStats(250, 12); // → tu l’appelleras depuis ton mini-jeu plus tard
+  // 5. Surveille la connexion pour charger les stats de l'utilisateur
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        pointsEl.textContent = data.points || 0;
+        partiesEl.textContent = data.partiesJouées || 0;
+        meilleurScoreEl.textContent = data.meilleurScore || 0;
+      } else {
+        pointsEl.textContent = 0;
+        partiesEl.textContent = 0;
+        meilleurScoreEl.textContent = 0;
+        console.log("Pas encore de données de stats pour cet utilisateur.");
+      }
+    } else {
+      pointsEl.textContent = 0;
+      partiesEl.textContent = 0;
+      meilleurScoreEl.textContent = 0;
+      console.log("Utilisateur non connecté");
+    }
+  });
+
+  // Pour pouvoir tester la fonction dans la console (optionnel)
+  window.updateStats = updateStats;
 </script>
 
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
