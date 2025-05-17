@@ -82,12 +82,12 @@
     });
   </script>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+  <!-- Firebase et ton code en module -->
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+    import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+    import { getFirestore, doc, getDoc, setDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
-  <script>
     // Ta config Firebase (remplace par ta config réelle)
     const firebaseConfig = {
       apiKey: "AIzaSyDUYXwvQGNvG7FF1hmEY8T-nvtpnXCaWkI",
@@ -99,10 +99,9 @@
     };
 
     // Initialise Firebase
-    firebase.initializeApp(firebaseConfig);
-
-    const auth = firebase.auth();
-    const db = firebase.firestore();
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
     const pointsEl = document.getElementById('points');
     const partiesEl = document.getElementById('parties');
@@ -113,18 +112,18 @@
       const user = auth.currentUser;
       if (!user) return;
 
-      const userRef = db.collection("users").doc(user.uid);
-      const doc = await userRef.get();
+      const userRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(userRef);
 
-      if (!doc.exists) {
-        await userRef.set({
+      if (!docSnap.exists()) {
+        await setDoc(userRef, {
           points: nouveauxPoints,
           partiesJouées: 1,
           meilleurScore: scoreDeLaPartie
         });
       } else {
-        const data = doc.data();
-        await userRef.update({
+        const data = docSnap.data();
+        await updateDoc(userRef, {
           points: (data.points || 0) + nouveauxPoints,
           partiesJouées: (data.partiesJouées || 0) + 1,
           meilleurScore: Math.max(data.meilleurScore || 0, scoreDeLaPartie)
@@ -133,12 +132,12 @@
     }
 
     // Surveille la connexion utilisateur et affiche les stats
-    auth.onAuthStateChanged(async (user) => {
+    onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const docRef = db.collection("users").doc(user.uid);
-        const docSnap = await docRef.get();
+        const docRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(docRef);
 
-        if (docSnap.exists) {
+        if (docSnap.exists()) {
           const data = docSnap.data();
           pointsEl.textContent = data.points || 0;
           partiesEl.textContent = data.partiesJouées || 0;
