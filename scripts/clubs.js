@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let allPlayers = [];
 
-  // Récupère tous les joueurs de toutes les saisons
+  // Récupère les joueurs de toutes les saisons
   function updateAllPlayers() {
     allPlayers = [];
 
