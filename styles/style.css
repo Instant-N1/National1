@@ -767,6 +767,75 @@ nav ul li.active a {
   font-family: sans-serif;
 }
 
+.suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 300px;
+  z-index: 1000;
+}
+
+.suggestions-list li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.search-container {
+  position: relative;
+  max-width: 400px;
+  margin: 30px auto;
+}
+
+#playerSearch {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: border-color 0.3s;
+}
+
+#playerSearch:focus {
+  border-color: #0077cc;
+}
+
+.suggestions-list {
+  list-style: none;
+  margin: 5px 0 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 0 0 8px 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.suggestions-list li {
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
+
 footer {
     background-color: blue;
     color: white;

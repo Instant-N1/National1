@@ -17,6 +17,8 @@ const clubsData = {
         { nom: "Cissé",prenom: "Souleymane", numero: 13, poste: "Défenseur", photo: "cisse_dfco.png", photoMatch:"cisse2_dfco.png", id:"SC13D"},
         { nom: "Sylla",prenom: "Mohamed", numero: 21, poste: "Défenseur", photo: "sylla_dfco.png", photoMatch:"sylla2_dfco.png", id:"MS21D"},
         { nom: "Makutungu",prenom: "Cédric", numero: 23, poste: "Défenseur", photo: "makutungu_dfco.png", photoMatch:"makutungu2_dfco.png", id:"CM23D"},
+        { nom: "Akakpo",prenom: "Izak", numero: 32, poste: "Défenseur", photo: "akakpo_dfco.png", photoMatch:"akakpo2_dfco.png", id:"IA32D" },
+        { nom: "Moussa",prenom: "Mathéo", numero: 34, poste: "Défenseur", photo: "moussa_dfco.png", photoMatch:"moussa2_dfco.png", id:"MM34D" },
         { nom: "Souici",prenom: "Rayan", numero: 6, poste: "Milieu", photo: "souici_dfco.png", photoMatch:"souici2_dfco.png", id:"RS6D"},
         { nom: "Hamada",prenom: "Ben-Chayeel", numero: 7, poste: "Milieu", photo: "hamada_dfco.png", photoMatch:"hamada2_dfco.png", id:"BH7D"},
         { nom: "Lembezat",prenom: "Adel", numero: 11, poste: "Milieu", photo: "lembezat_dfco.png", photoMatch:"lembezat2_dfco.png", id:"AL11D"},
@@ -26,6 +28,7 @@ const clubsData = {
         { nom: "Vargas-Rios",prenom: "Hugo", numero: 20, poste: "Milieu", photo: "vargasrios_dfco.png", photoMatch:"vargasrios2_dfco.png", id:"HV20D"},
         { nom: "Meyer",prenom: "Jules", numero: 26, poste: "Milieu", photo: "meyer_dfco.png", photoMatch:"meyer2_dfco.png", id:"JM26D"},
         { nom: "Moco",prenom: "Zoran", numero: 27, poste: "Milieu", photo: "moco_dfco.png", photoMatch:"moco2_dfco.png", id:"ZM27D"},
+        { nom: "Gui",prenom: "Davy", numero: 29, poste: "Milieu", photo: "gui_dfco.png", photoMatch:"gui2_dfco.png", id:"DG29D" },
         { nom: "Schur",prenom: "Kévin", numero: 8, poste: "Attaquant", photo: "schur_dfco.png", photoMatch:"schur2_dfco.png", id:"KS8D"},
         { nom: "Barka",prenom: "Yanis", numero: 9, poste: "Attaquant", photo: "barka_dfco.png", photoMatch:"barka2_dfco.png", id:"YB9D"},
         { nom: "Ikanga",prenom: "Jovanny", numero: 10, poste: "Attaquant", photo: "ikanga_dfco.png", photoMatch:"ikanga2_dfco.png", id:"JI10D"},
@@ -41,6 +44,29 @@ const clubsData = {
         { nom: "Patouillet",prenom: "Mathieu", numero: 1, poste: "Gardien", photo: "patouillet_fcsm.png", photoMatch:"patouillet2_fcsm.png", id:"MP1S" },
         { nom: "Valette",prenom: "Baptiste", numero: 16, poste: "Gardien", photo: "valette_fcsm.png", photoMatch:"valette2_fcsm.png", id:"BV16S" },
         { nom: "Pierre",prenom: "Alexandre", numero: 30, poste: "Gardien", photo: "pierre_fcsm.png", photoMatch:"pierre2_fcsm.png", id:"AP30S" },
+        { nom: "Rangon",prenom: "Malcolm", numero: 0, poste: "Défenseur", photo: "rangon_fcsm.png", photoMatch:"rangon2_fcsm.png", id:"MR0S" },
+        { nom: "Guett Guett",prenom: "Alex", numero: 2, poste: "Défenseur", photo: "guett_guett_fcsm.png", photoMatch:"guett_guett2_fcsm.png", id:"AG2S" },
+        { nom: "Vitelli",prenom: "Arthur", numero: 4, poste: "Défenseur", photo: "vitelli_fcsm.png", photoMatch:"vitelli2_fcsm.png", id:"AV4S" },
+        { nom: "Moltenis",prenom: "Boris", numero: 5, poste: "Défenseur", photo: "moltenis_fcsm.png", photoMatch:"moltenis2_fcsm.png", id:"BM5S" },
+        { nom: "Ouammou",prenom: "Nassim", numero: 7, poste: "Défenseur", photo: "ouammou_fcsm.png", photoMatch:"ouammou2_fcsm.png", id:"NO7S" },
+        { nom: "Peybernes",prenom: "Mathieu", numero: 14, poste: "Défenseur", photo: "peybernes_fcsm.png", photoMatch:"peybernes2_fcsm.png", id:"MP14S" },
+        { nom: "Fontaine",prenom: "Thomas", numero: 15, poste: "Défenseur", photo: "fontaine_fcsm.png", photoMatch:"fontaine2_fcsm.png", id:"TF15S" },
+        { nom: "Mayela",prenom: "Victor", numero: 23, poste: "Défenseur", photo: "mayela_fcsm.png", photoMatch:"mayela2_fcsm.png", id:"VM23S" },
+        { nom: "Dacosta",prenom: "Julien", numero: 29, poste: "Défenseur", photo: "dacosta_fcsm.png", photoMatch:"dacosta2_fcsm.png", id:"JD29S" },
+        { nom: "Drammeh",prenom: "Mouhamadou", numero: 6, poste: "Milieu", photo: "drammeh_fcsm.png", photoMatch:"drammeh2_fcsm.png", id:"MD6S" },
+        { nom: "Hoggas",prenom: "Kévin", numero: 8, poste: "Milieu", photo: "hoggas_fcsm.png", photoMatch:"hoggas2_fcsm.png", id:"KH8S" },
+        { nom: "Liénard",prenom: "Dimitri", numero: 21, poste: "Milieu", photo: "lienard_fcsm.png", photoMatch:"lienard2_fcsm.png", id:"DL21S" },
+        { nom: "Benchamma",prenom: "Samy", numero: 26, poste: "Milieu", photo: "benchamma_fcsm.png", photoMatch:"benchamma2_fcsm.png", id:"SB26S" },
+        { nom: "Michel",prenom: "Diego", numero: 27, poste: "Milieu", photo: "michel_fcsm.png", photoMatch:"michel2_fcsm.png", id:"DM27S" },
+        { nom: "Mendes",prenom: "Elson", numero: 28, poste: "Milieu", photo: "mendes_fcsm.png", photoMatch:"mendes2_fcsm.png", id:"EM28S" },
+        { nom: "Fatar",prenom: "Noah", numero: 17, poste: "Attaquant", photo: "fatar_fcsm.png", photoMatch:"fatar2_fcsm.png", id:"NF17S" },
+        { nom: "Doumbia",prenom: "Moussa", numero: 18, poste: "Attaquant", photo: "doumbia_fcsm.png", photoMatch:"doumbia2_fcsm.png", id:"MD18S" },
+        { nom: "Lecolier",prenom: "Martin", numero: 19, poste: "Attaquant", photo: "lecolier_fcsm.png", photoMatch:"lecolier2_fcsm.png", id:"ML19S" },
+        { nom: "Durbant",prenom: "Geoffray", numero: 20, poste: "Attaquant", photo: "durbant_fcsm.png", photoMatch:"durbant2_fcsm.png", id:"GD20S" },
+        { nom: "Loubao",prenom: "Solomon", numero: 22, poste: "Attaquant", photo: "loubao_fcsm.png", photoMatch:"loubao2_fcsm.png", id:"SL22S" },
+        { nom: "Jean",prenom: "Corentin", numero: 24, poste: "Attaquant", photo: "jean_fcsm.png", photoMatch:"jean2_fcsm.png", id:"CJ24S" },
+        { nom: "Daho",prenom: "Alex", numero: 25, poste: "Attaquant", photo: "daho_fcsm.png", photoMatch:"daho2_fcsm.png", id:"AD25S" },
+        { nom: "Gnanduillet",prenom: "Armand", numero: 31, poste: "Attaquant", photo: "gnanduillet_fcsm.png", photoMatch:"gnanduillet2_fcsm.png", id:"AG31S" },
       ]
     },
     {
@@ -79,8 +105,9 @@ const clubsData = {
   ],
   "2025-2026": [
     {
-      nom: "Bientot disponible",
-      logo: "",
-      joueurs: []}
+      nom: "Dijon",
+      logo: "logo_dfco.png",
+      joueurs: [        
+	{ nom: "Ntamack",prenom: "Test", numero: 27, poste: "Attaquant", photo: "agoro_fcv.png", photoMatch:"agoro_fcv.png", id:"PD16D" },]}
   ]
 };

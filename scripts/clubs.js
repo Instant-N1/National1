@@ -1,11 +1,61 @@
 document.addEventListener("DOMContentLoaded", function () {
   const seasonSelect = document.getElementById("seasonSelect");
   const clubsContainer = document.getElementById("clubsContainer");
+  const playerSearch = document.getElementById("playerSearch");
+  const suggestionsList = document.getElementById("suggestionsList");
 
+  let allPlayers = [];
+
+  // Récupère tous les joueurs de toutes les saisons
+  function updateAllPlayers() {
+    allPlayers = [];
+
+    for (const saison in clubsData) {
+      const clubs = clubsData[saison];
+      clubs.forEach(club => {
+        club.joueurs.forEach(joueur => {
+          const exists = allPlayers.some(j => j.id === joueur.id);
+          if (!exists) {
+            allPlayers.push({
+              nomComplet: `${joueur.prenom} ${joueur.nom}`,
+              id: joueur.id
+            });
+          }
+        });
+      });
+    }
+  }
+
+  // Affiche les suggestions correspondant à la requête
+  function showSuggestions(query) {
+    const input = query.toLowerCase().trim();
+    suggestionsList.innerHTML = "";
+
+    if (input.length === 0) return;
+
+    // Recherche si prénom ou nom contient la chaîne entrée (pas juste startsWith)
+    const filtered = allPlayers.filter(joueur => 
+      joueur.nomComplet.toLowerCase().includes(input)
+    );
+
+    filtered.slice(0, 10).forEach(joueur => {
+      const li = document.createElement("li");
+      li.textContent = joueur.nomComplet;
+      li.style.cursor = "pointer";
+      li.addEventListener("click", () => {
+        window.location.href = `joueur.html?id=${joueur.id}`;
+      });
+      suggestionsList.appendChild(li);
+    });
+  }
+
+  // Affiche les clubs pour une saison donnée
   function displayClubs(season) {
-    clubsContainer.innerHTML = ""; // Clear old content
+    clubsContainer.innerHTML = "";
 
     const clubs = clubsData[season];
+    if (!clubs) return;
+
     clubs.forEach(club => {
       const clubDiv = document.createElement("div");
       clubDiv.className = "club";
@@ -32,11 +82,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Event listener pour changer la saison affichée
   seasonSelect.addEventListener("change", () => {
     displayClubs(seasonSelect.value);
   });
 
-  // Click sur une carte joueur
+  // Redirection sur clic d'une carte joueur dans la liste des clubs
   clubsContainer.addEventListener("click", function (e) {
     const card = e.target.closest(".joueur-card");
     if (card) {
@@ -45,6 +96,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Affiche la saison sélectionnée au chargement
+  // Recherche dynamique au fil de la frappe
+  playerSearch.addEventListener("input", () => {
+    showSuggestions(playerSearch.value);
+  });
+
+  // Ferme les suggestions si clic en dehors
+  document.addEventListener("click", (e) => {
+    if (!suggestionsList.contains(e.target) && e.target !== playerSearch) {
+      suggestionsList.innerHTML = "";
+    }
+  });
+
+  // Initialisation au chargement
+  updateAllPlayers();
   displayClubs(seasonSelect.value);
 });
